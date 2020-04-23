@@ -1,4 +1,5 @@
 import React from 'react';
+import InputForm from '../InputForm/InputForm';
 
 import ShelfPage from '../ShelfPage/ShelfPage'
 
@@ -16,7 +17,16 @@ const InfoPage = () => (
       Shelf Page
       <ShelfPage />
     </p>
+
   </div >
+
+
+    <p>to delete: please send the item_id and user_id in the action payload object</p>
+
+    <InputForm />
+
+  </div>
+
 );
 
 
