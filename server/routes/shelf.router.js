@@ -29,7 +29,15 @@ router.post('/', (req, res) => {
  * Delete an item if it's something the logged in user added
  */
 router.delete('/:id', (req, res) => {
-
+    console.log('id of item to delete and user to delete arrived at server', req.body);
+    let sqlText = `DELETE FROM "item" WHERE "id" = $1 AND "user_id" = $2;`;
+    pool.query(sqlText, [req.body.item_id, req.body.user_id]).then((response) => {
+        console.log('deleted', response);
+        res.sendStatus(200);
+    }).catch( error => {
+        console.log('error', error);
+        res.sendStatus(500);
+    });
 });
 
 
