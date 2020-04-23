@@ -14,7 +14,14 @@ router.get('/', (req, res) => {
  * Add an item for the logged in user to the shelf
  */
 router.post('/', (req, res) => {
-
+    console.log('item arrived at server', req.body);
+    let sqlText = `INSERT INTO "item" ("description", "image_url", "user_id") VALUES ($1, $2, $3 );`;
+    pool.query(sqlText, [req.body.description, req.body.image_url, req.body.user_id]).then( () => {
+        res.sendStatus(200);    
+    }).catch( error => {
+        console.log('error in adding item to database ', error)
+        res.sendStatus(500);
+    });
 });
 
 
