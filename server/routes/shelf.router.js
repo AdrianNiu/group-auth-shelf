@@ -14,7 +14,9 @@ router.get('/', (req, res) => {
  * Add an item for the logged in user to the shelf
  */
 router.post('/', (req, res) => {
-
+    console.log('id of item to delete and user to delete arrived at server', req.body);
+    let sqlText = `DELETE FROM "item" WHERE "id" = $1 AND "user_id" = $2;`;
+    pool.query(sqlText, [req.body.item_id, req.body.user_id]).then().catch();
 });
 
 

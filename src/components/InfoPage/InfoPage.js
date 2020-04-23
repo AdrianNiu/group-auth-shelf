@@ -10,6 +10,7 @@ const InfoPage = () => (
     <p>
       Shelf Page
     </p>
+    <p>to delete: please send the item_id and user_id in the action payload object</p>
   </div>
 );
 
