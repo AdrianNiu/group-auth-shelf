@@ -13,18 +13,10 @@ import ShelfPage from '../ShelfPage/ShelfPage'
 
 const InfoPage = () => (
   <div>
+    <InputForm />
     <p>
-      Shelf Page
       <ShelfPage />
     </p>
-
-
-
-
-    <p>to delete: please send the item_id and user_id in the action payload object</p>
-
-    <InputForm />
-
   </div>
 
 );

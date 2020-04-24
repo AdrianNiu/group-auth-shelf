@@ -12,7 +12,12 @@ class ShelfPage extends Component {
 
     getShelf = () => {
         console.log('In getShelf');
-        this.props.dispatch({ type: 'FETCH_SHELF' })
+        this.props.dispatch({ type: 'FETCH_SHELF' });
+    }
+
+    handleDelete = (id) => {
+        console.log('delete this!', id);
+        this.props.dispatch({ type: 'DELETE_ITEM', payload: {item_id: id, user_id: this.props.reduxStore.user.id}});
     }
 
 
@@ -20,15 +25,14 @@ class ShelfPage extends Component {
         return (
             <div>
                 <>
-                    {JSON.stringify(this.props.shelf)}
-                    {this.props.shelf.map((item) => <ul key={item.id}><li>{item.description}</li><li>{item.image_url}</li></ul>)}
+                    {this.props.reduxStore.shelf.map((item) => <tr key={item.id}><td>-</td><td>{item.description}</td><td>{item.image_url}</td><td><button onClick={() => this.handleDelete(item.id)}>Delete</button></td></tr>)}
                 </>
             </div>
         )
     }
 }
 const putPropsOnRedux = (reduxStore) => ({
-    shelf: reduxStore.shelf
+    reduxStore
 })
 export default withRouter(connect(putPropsOnRedux)(ShelfPage));
 
