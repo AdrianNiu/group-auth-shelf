@@ -28,7 +28,10 @@ class InputForm extends Component {
         description: this.state.description, 
         image_url:this.state.image_url, 
         user_id: this.props.reduxState.user.id}})
-    
+    this.setState({
+      description: '',
+      image_url:'',
+    })
   }
   
   render() {
